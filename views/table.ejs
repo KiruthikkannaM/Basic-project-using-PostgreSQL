@@ -1,0 +1,85 @@
+<%-include('partials/header.ejs')-%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table page</title>
+    <link rel="stylesheet" type="text/css" href="styles/sub2.css">
+
+</head>
+<body>
+    <div class="content-section">
+    <h2>What is "Create"?</h2>
+    <p>The "Create" operation allows you to create a new table in your database. Enter the SQL query below to define the structure of your new table:</p>
+    <form action="/create" method="post">
+        <div class="create">
+            <h3>Enter the create query:</h3>
+            <input type="text" name="createQuery" placeholder="SYNTAX: CREATE TABLE TABLE_NAME(column1,column2)">
+            <input type="submit">
+        </div>
+    </form>
+    </div>
+    <div class="content-section">
+    <h2>What is "Insert"?</h2>
+    <p>The "Insert" operation allows you to add new data into an existing table in your database. Enter the SQL query below to insert data into the table:</p>
+    <form action="/insert" method="post">
+        <div class="insert">
+            <h3>Enter the insert query:</h3>
+            <input type="text" name="insertQuery" placeholder="SYNTAX: INSERT INTO TABLE_NAME(column1,.....) VALUES(value1,.....)">
+            <input type="submit">
+        </div>
+    </form>
+    </div>
+    <div class="content-section">
+    <h2>What is "Delete"?</h2>
+    <p>The "Delete" operation allows you to remove data from an existing table or drop the table entirely from your database. Enter the SQL query below to delete data or drop a table:</p>   
+    <form action="/delete" method="post">
+        <div class="insert">
+            <h3>Enter the delete (or) drop query:</h3>
+            <input type="text" name="deleteQuery" placeholder="SYNTAX: INSERT INTO TABLE_NAME(column1,.....) VALUES(value1,.....)">
+            <input type="submit">
+        </div>
+    </form>
+    </div>
+    <div class="content-section">
+    <h2>What is "Select"?</h2>
+    <p>The "Select" operation allows you to retrieve data from an existing table in your database based on specified conditions. Enter the SQL query below to select data:</p>   
+    <form action="/select" method="post">
+        <div class="select">
+            <h3>Enter the select query:</h3>
+            <input type="text" name="selectQuery" placeholder="SYNTAX: SELECT column1,..... FROM TABLE_NAME WHERE CONDITION.">
+            <input type="submit">
+        </div>
+    </form>
+    </div>
+    <% if (locals.data && locals.data.length > 0) { %>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <% Object.keys(data[0]).forEach((key) => { %>
+                            <th><%= key %></th>
+                        <% }) %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach((row) => { %>
+                        <tr>
+                            <% Object.values(row).forEach((value) => { %>
+                                <td><%= value %></td>
+                            <% }) %>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } else { %>
+        <p>No data available.</p>
+    <% } %>
+    
+</body>
+<script>
+
+</script>
+</html>
