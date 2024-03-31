@@ -18,7 +18,7 @@
   Installation:
     To set up the project locally, follow these steps:
 
-    Clone the repository: git clone https://github.com/yourusername/your-repository.git
+    Clone the repository: git clone https://github.com/KiruthikkannaM/Basic-project-using-PostgreSQL
     Install dependencies: npm install express pg body-parser nodemon
     Configure PostgreSQL: Set up your PostgreSQL database and update the connection details in config.js or settings.py, etc.
     Run the application: npm start or nodemon index.js.
